@@ -1,4 +1,4 @@
-import { askInt, arrangements, factorial } from "./combinatorics";
+import { arrangements } from "./combinatorics";
 
 export async function runLevel1(): Promise<void> {
   console.log("Рівень 1 - Розміщення БЕЗ повторень");

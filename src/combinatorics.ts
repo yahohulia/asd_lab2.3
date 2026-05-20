@@ -1,6 +1,3 @@
-/**
- * Математичні функції комбінаторики та утиліта вводу
- */
 import * as readline from "readline";
 
 const rl = readline.createInterface({
@@ -17,15 +14,13 @@ export async function askInt(q: string): Promise<number> {
     const raw = await ask(q);
     const val = parseInt(raw.trim());
     if (!isNaN(val) && val >= 0) return val;
-    console.log("  ⚠  Введіть ціле невід'ємне число!");
+    console.log("Введіть ціле невід'ємне число!");
   }
 }
 
 export function closeInput(): void {
   rl.close();
 }
-
-// ─── Факторіал ───────────────────────────────────────────────────────────────
 
 export function factorial(n: number): bigint {
   if (n < 0) throw new Error("Факторіал від'ємного числа");
@@ -34,27 +29,19 @@ export function factorial(n: number): bigint {
   return result;
 }
 
-// ─── Розміщення без повторень A(n, k) = n! / (n-k)! ─────────────────────────
-
 export function arrangements(n: number, k: number): bigint {
   if (k > n) return 0n;
   return factorial(n) / factorial(n - k);
 }
 
-// ─── Перестановки без повторень P(n) = n! ────────────────────────────────────
-
 export function permutations(n: number): bigint {
   return factorial(n);
 }
-
-// ─── Комбінації без повторень C(n, k) = n! / (k! * (n-k)!) ──────────────────
 
 export function combinations(n: number, k: number): bigint {
   if (k > n) return 0n;
   return factorial(n) / (factorial(k) * factorial(n - k));
 }
-
-// ─── Перестановки З повтореннями P(n; k1,k2,...) = n! / (k1! * k2! * ...) ───
 
 export function permutationsWithRep(n: number, counts: number[]): bigint {
   const sum = counts.reduce((a, b) => a + b, 0);
@@ -64,13 +51,9 @@ export function permutationsWithRep(n: number, counts: number[]): bigint {
   return factorial(n) / denom;
 }
 
-// ─── Розміщення З повтореннями A*(n, k) = n^k ───────────────────────────────
-
 export function arrangementsWithRep(n: number, k: number): bigint {
   return BigInt(n) ** BigInt(k);
 }
-
-// ─── Комбінації З повтореннями C*(n, k) = C(n+k-1, k) ───────────────────────
 
 export function combinationsWithRep(n: number, k: number): bigint {
   return combinations(n + k - 1, k);

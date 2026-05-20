@@ -1,4 +1,4 @@
-import { askInt, permutationsWithRep, factorial } from "./combinatorics";
+import { permutationsWithRep, factorial } from "./combinatorics";
 import { ask } from "./combinatorics";
 
 export async function runLevel2(): Promise<void> {
